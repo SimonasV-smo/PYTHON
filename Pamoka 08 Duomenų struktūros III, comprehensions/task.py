@@ -83,4 +83,5 @@ print(tuple_rez)
 
 print('----------')
 
-dict_rez = {num: num}
+dict_rez = {num: num ** 2 for num in listas}
+print(dict_rez)
