@@ -24,16 +24,16 @@
 #
 # greet('Darius')
 # greet()
-
-def priimk_pacienta(pacientas, gydytojas='gyd. Pagalnutylenis'):
-    irasas_gyd_zurnale = f'pacientas {pacientas}, prieme {gydytojas}'
-    return irasas_gyd_zurnale
-
-res = priimk_pacienta('Adomas')
-print(res)
-
-res = priimk_pacienta('Rolis')
-print(res)
-
-res = priimk_pacienta(pacientas='Adomas',gydytojas='gyd. Pakaitenis')
-print(res)
+#
+# def priimk_pacienta(pacientas, gydytojas='gyd. Pagalnutylenis'):
+#     irasas_gyd_zurnale = f'pacientas {pacientas}, prieme {gydytojas}'
+#     return irasas_gyd_zurnale
+#
+# res = priimk_pacienta('Adomas')
+# print(res)
+#
+# res = priimk_pacienta('Rolis')
+# print(res)
+#
+# res = priimk_pacienta(pacientas='Adomas',gydytojas='gyd. Pakaitenis')
+# print(res)
