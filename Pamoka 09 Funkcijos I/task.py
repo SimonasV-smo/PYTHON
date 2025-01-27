@@ -30,6 +30,9 @@ print(res)
 
 print('-----------')
 
+# 4. Numatytosios reikšmės ir keyword argumentai
+# Užduotis 4:
+
 def sveikink_su_pavadinimu(vardas, pavadinimas='bičiuli'):
     sveikinimas = f'Sveikas, {vardas}! Ka veiki, {pavadinimas}?'
     return sveikinimas
