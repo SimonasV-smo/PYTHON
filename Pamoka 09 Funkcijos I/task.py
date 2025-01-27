@@ -8,12 +8,31 @@
 #
 # sveikink()
 
-# 2 task\\ Argumentai ir return reiksmes
+# # 2 task\\ Argumentai ir return reiksmes
+#
+# x = int(input('Pirmas daugiklis: '))
+# y = int(input('Atras daugiklis: '))
+#
+# def sudaugink(x, y):
+#     rez = x * y
+#     print('rezultatas = ', rez )
+# sudaugink(x, y)
 
-x = int(input('Pirmas daugiklis: '))
-y = int(input('Atras daugiklis: '))
+# 3. Funkcijos su keliais argumentais
+# task 3
 
-def sudaugink(x, y):
-    rez = x * y
-    print('rezultatas = ', rez )
-sudaugink(x, y)
+def trys_sveikinimai(vardas1, vardas2, vardas3):
+    sveikinimas = f'Labas, {vardas1}!', f'Labas, {vardas2}!', f'Labas, {vardas3}!'
+    return sveikinimas
+
+res = trys_sveikinimai('Simonas', 'Antanas', 'Jurgis')
+print(res)
+
+print('-----------')
+
+def sveikink_su_pavadinimu(vardas, pavadinimas='bičiuli'):
+    sveikinimas = f'Sveikas, {vardas}! Ka veiki, {pavadinimas}?'
+    return sveikinimas
+
+res = sveikink_su_pavadinimu('Simonas')
+print(res)
