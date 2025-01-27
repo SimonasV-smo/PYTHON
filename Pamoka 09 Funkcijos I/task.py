@@ -22,7 +22,7 @@
 # task 3
 
 def trys_sveikinimai(vardas1, vardas2, vardas3):
-    sveikinimas = f'Labas, {vardas1}!', f'Labas, {vardas2}!', f'Labas, {vardas3}!'
+    sveikinimas = f'Labas, {vardas1}! Labas, {vardas2}! Labas, {vardas3}!'
     return sveikinimas
 
 res = trys_sveikinimai('Simonas', 'Antanas', 'Jurgis')
