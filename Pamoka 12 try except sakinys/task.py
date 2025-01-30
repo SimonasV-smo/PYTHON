@@ -33,14 +33,33 @@
 #
 #     print('-' *20)
 
-# 4
+# # 4
+#
+# while True:
+#     skaicius = input('Iveskite skaiciu: ')
+#     try:
+#         int_skaicius = int(skaicius)
+#         print('Ivestas skaicius tinkamas')
+#     except ValueError:
+#         print('Ivestas ne skaicius, perkraukite ir naudokite skaiciu.')
+#         break
+#     else:
+#         print(f'Konversija sekminga: {int_skaicius}')
+#     finally:
+#         print('programa baige darba')
 
-while True:
-    skaicius = input('Iveskite skaiciu: ')
-    try:
-        int_skaicius = int(skaicius)
-        print('Ivestas skaicius tinkamas')
-    except ValueError:
-        print('Ivestas ne skaicius, perkraukite ir naudokite skaiciu.')
-    finally:
-        print('programa baige darba')
+# # 5
+#
+#
+#
+# def amziaus_tikrinimas(amzius):
+#     if amzius < 0:
+#         raise ValueError('amzius negali buti neigiamas')
+#     elif amzius >= 18:
+#         print('Vartotojas pilnametis')
+#     else:
+#         print('Varotojas nepilnametis')
+#
+# amziaus_tikrinimas(15)
+# amziaus_tikrinimas(20)
+# amziaus_tikrinimas(-5)

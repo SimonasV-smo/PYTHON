@@ -33,46 +33,68 @@
 #
 #     print("Programa tęsia darbą")
 
-# try-except-else-finally struktūra
-#             Pavyzdys: else ir finally naudojimas
+# # try-except-else-finally struktūra
+# #             Pavyzdys: else ir finally naudojimas
+#
+# try:
+#     res = 100 / 0
+# except ZeroDivisionError:
+#     print("Dalyba iš 0 negalima")
+# else:
+#     print('Gerb. useri, stai jusu rezultatas : {res}')
+#
+#             # Pavyzdys: Naudojant finally
+#
+# while True:
+#     ivestis = input("Įveskite float skaičių")
+#     try:
+#         float_skaicius = float(ivestis)
+#         print("Įvestis tinkama", float_skaicius)
+#         break
+#     except ValueError:
+#         print("Įvestis NETINKAMA, pakartokite!!!")
+#     finally:
+#         print("Manęs niekaip neatsikratysit - FINALLY komanda")
+#
+# print("Programa tęsia darbą")
+#
+# def create_user(user_data: dict):
+#     print('User created!')
+#
+# users_to_create = {
+#     'user1': {'name': 'Darius', 'aka': 123456789},
+#     'user2': {'name': 'Tomas', 'aka': 123456789123489},
+#     'user3': {'name': 'Adomas', 'aka': 12345678123412349},
+# }
+#
+# created_users = {}
+# for user_key, user_info in users_to_create.items():
+#     try:
+#         create_user(user_info)
+#     except Exception as e:
+#         print(e)
+#     finally:
+#         created_users[user_key] = user_info
+#         print(f'User {user_key} already created with values {user_info}')
 
-try:
-    res = 100 / 0
-except ZeroDivisionError:
-    print("Dalyba iš 0 negalima")
-else:
-    print('Gerb. useri, stai jusu rezultatas : {res}')
+# def sumuok_int_skacius(sk1: int, sk2: int) -> int:
+#     if not (type(sk1) is int and type(sk2) is int):
+#         raise ValueError
+#     return sk1 + sk2
+#
+# res = sumuok_int_skacius(4, '5')
+# print(res)
 
-            # Pavyzdys: Naudojant finally
-
-while True:
-    ivestis = input("Įveskite float skaičių")
-    try:
-        float_skaicius = float(ivestis)
-        print("Įvestis tinkama", float_skaicius)
-        break
-    except ValueError:
-        print("Įvestis NETINKAMA, pakartokite!!!")
-    finally:
-        print("Manęs niekaip neatsikratysit - FINALLY komanda")
-
-print("Programa tęsia darbą")
-
-def create_user(user_data: dict):
-    print('User created!')
-
-users_to_create = {
-    'user1': {'name': 'Darius', 'aka': 123456789},
-    'user2': {'name': 'Tomas', 'aka': 123456789123489},
-    'user3': {'name': 'Adomas', 'aka': 12345678123412349},
-}
-
-created_users = {}
-for user_key, user_info in users_to_create.items():
-    try:
-        create_user(user_info)
-    except Exception as e:
-        print(e)
-    finally:
-        created_users[user_key] = user_info
-        print(f'User {user_key} already created with values {user_info}')
+# current_user = 'Manager'
+#
+# employee_salaries = {
+#     'Jimm': 1000,
+#     'Tomm': 2000
+# }
+#
+# def show_employee_salary(employee: str) -> int:
+#     if current_user not in ['Admin', 'Manager']:
+#         raise ValueError('You are not allowed to see.')
+#     return employee_salaries[employee]
+#
+# print(show_employee_salary('Jimm'))
