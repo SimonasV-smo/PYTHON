@@ -49,13 +49,13 @@
 # # 5task
 #
 import datetime
-#
-#
-# user_input = input('Iveskite data formatu "YYYY-MM-DD": ')
-#
-# date_time= datetime.datetime.strptime(user_input, '%Y-%m-%d')
-#
-# print(date_time)
+
+
+user_input = input('Iveskite data formatu "YYYY-MM-DD": ')
+
+date_time= datetime.datetime.strptime(user_input, '%Y-%m-%d')
+
+print(date_time)
 
 # 6task
 
