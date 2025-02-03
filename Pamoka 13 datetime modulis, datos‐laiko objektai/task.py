@@ -1,7 +1,7 @@
 
 # 0task
 
-import datetime
+# import datetime
 #
 # print(datetime)
 #
@@ -22,22 +22,52 @@ import datetime
 # print(f'Dabar yra {dt_res.hour}:{dt_res.minute},'
 #       f' {dt_res.day}-{dt_res.month}-{dt_res.year} ')
 
-# 2task
+# # 2task
+#
+# print('-' * 50)
+#
+# dt_object = datetime.datetime(year=1995, month=7, day=14, hour=15, minute=30, second=00)
+# print(dt_object)
+#
+# print('-' * 50)
+#
+# dt_object1 = datetime.date(year=2023, month=1, day=1)
+# print(dt_object1)
+#
+# print('-' * 50)
+#
+# # 3task
+#
+# siandien = datetime.datetime.today()
+# tukstantmetis = datetime.datetime(2000, 1, 1)
+#
+# skirtumas = siandien - tukstantmetis
+# print(f'Nuo {tukstantmetis.date()} praejo: {skirtumas.days} dienu. ')
+#
+# print('-' * 50)
 
-dt_object = datetime.datetime(year=1995, month=7, day=14, hour=15, minute=30, second=00)
-print(dt_object)
+# # 5task
+#
+import datetime
+#
+#
+# user_input = input('Iveskite data formatu "YYYY-MM-DD": ')
+#
+# date_time= datetime.datetime.strptime(user_input, '%Y-%m-%d')
+#
+# print(date_time)
 
-print('-' * 50)
+# 6task
 
-dt_object1 = datetime.date(year=2023, month=1, day=1)
-print(dt_object1)
+import locale
 
-print('-' * 50)
+locale.setlocale(locale.LC_TIME, 'lt_LT.utf8')
 
-# 3task
+ivestis = '2022-12-31, 23:59:59'
+date_time = datetime.datetime.strptime(ivestis, '%Y-%m-%d, %H:%M:%S')
 
-siandien = datetime.datetime.today()
-tukstantmetis = datetime.datetime(2000, 1, 1)
+formated_date_time_1 = date_time.strftime('%d/%m/%Y, %H:%M:%S')
+print(formated_date_time_1)
 
-skirtumas = siandien - tukstantmetis
-print(f'Nuo {tukstantmetis.date()} praejo : {skirtumas.days} dienu. ')
+formated_date_time_2 = date_time.strftime('%Y metu %B, %d diena')
+print(formated_date_time_2)
