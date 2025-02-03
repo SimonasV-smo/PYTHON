@@ -50,12 +50,20 @@
 #
 import datetime
 
+try:
 
-user_input = input('Iveskite data formatu "YYYY-MM-DD": ')
+    user_input = input('Iveskite data formatu "YYYY-MM-DD": ')
 
-date_time= datetime.datetime.strptime(user_input, '%Y-%m-%d')
 
-print(date_time)
+    date_time = datetime.datetime.strptime(user_input, '%Y-%m-%d')
+
+
+    print(date_time)
+
+except ValueError as e:
+
+    print(f"Klaida: {e}")
+
 
 # 6task
 
