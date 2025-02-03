@@ -59,9 +59,7 @@ print(date_time)
 
 # 6task
 
-import locale
 
-locale.setlocale(locale.LC_TIME, 'lt_LT.utf8')
 
 ivestis = '2022-12-31, 23:59:59'
 date_time = datetime.datetime.strptime(ivestis, '%Y-%m-%d, %H:%M:%S')
