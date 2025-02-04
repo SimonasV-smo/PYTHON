@@ -69,29 +69,32 @@
 # ivestis = '2020-02-15, 10:11:59'
 # my_datetime = datetime.datetime.strptime(ivestis, '%Y-%m-%d, %H:%M:%S')
 # print(my_datetime)
+#
+# import datetime
+# from calendar import month
+#
+# months= {
+#     1: 'Sausis',
+#     2: 'Vasaris'
+# }
+#
+# # ivestis = '2020-02-11'
+# # my_datetime = datetime.datetime.strptime(ivestis, '%Y-%m-%d')
+# # print(my_datetime)
+#
+# ivestis = '2020-02-15, 10:11:59'
+# my_datetime = datetime.datetime.strptime(ivestis, '%Y-%m-%d, %H:%M:%S')
+# # print(my_datetime)
+#
+# # print(my_datetime)
+# # print(type(my_datetime.strftime('%d %m %Y')))
+#
+# print(months.get((my_datetime.month)))
+#
+# print(my_datetime.strftime('%d %m %Y'))
+# print(my_datetime.strftime('%Y %m %d'))
+# print(my_datetime.strftime('%Y %B %d'))
 
 import datetime
-from calendar import month
 
-months= {
-    1: 'Sausis',
-    2: 'Vasaris'
-}
-
-# ivestis = '2020-02-11'
-# my_datetime = datetime.datetime.strptime(ivestis, '%Y-%m-%d')
-# print(my_datetime)
-
-ivestis = '2020-02-15, 10:11:59'
-my_datetime = datetime.datetime.strptime(ivestis, '%Y-%m-%d, %H:%M:%S')
-# print(my_datetime)
-
-# print(my_datetime)
-# print(type(my_datetime.strftime('%d %m %Y')))
-
-print(months.get((my_datetime.month)))
-
-print(my_datetime.strftime('%d %m %Y'))
-print(my_datetime.strftime('%Y %m %d'))
-print(my_datetime.strftime('%Y %B %d'))
-
+dabar = datetime.datetime.today()
