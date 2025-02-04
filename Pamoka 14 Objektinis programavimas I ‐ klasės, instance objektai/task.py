@@ -47,9 +47,9 @@ book1 = Book('1984', 'George Orwell', 1949 )
 book2 = Book('Everything Is F*cked', 'Mark Manson', 2019)
 
 print(
-    f'Knyga: "{book1.title}", autorius: {book1.author}, prasyta: {book1.year} metais, leidejas : {Book.publisher}.'
+    f'Knyga: "{book1.title}", autorius: {book1.author}, leidejas : {Book.publisher}.'
 )
 print(
-    f'Knyga: "{book2.title}", autorius: {book2.author}, prasyta: {book2.year} metais, leidejas: {Book.publisher}.'
+    f'Knyga: "{book2.title}", autorius: {book2.author}, leidejas: {Book.publisher}.'
 )
 
