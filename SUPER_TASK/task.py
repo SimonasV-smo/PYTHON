@@ -1,18 +1,15 @@
-from datetime import datetime, timedelta  # Importuojame reikalingas klases
+from datetime import datetime, timedelta
 
-# Knygos klasės sukūrimas
 class Book:
     def __init__(self, book_title, book_author, book_year, available=True):
-        # Patikriname, ar metai yra tinkamas sveikasis skaičius
         try:
-            book_year = int(book_year)  # Paverčiame į int
+            book_year = int(book_year)
             if book_year <= 0:
                 raise ValueError
         except (ValueError, TypeError):
             print("Netinkama metų reikšmė")
-            book_year = 2000  # Netinkamas duomenų tipas, turėtų būti int
+            book_year = 2000
 
-        # Priskiriame reikšmes klasės savybėms
         self.book_title = book_title
         self.book_author = book_author
         self.book_year = book_year
@@ -21,35 +18,29 @@ class Book:
     def __str__(self):
         return f'Knyga {self.book_title} parašyta {self.book_author} ({self.book_year})'
 
-    # Tikriname, ar knyga yra klasikinė (vyresnė nei 50 metų)
     def is_classic(self):
         current_year = datetime.now().year
         return current_year - self.book_year >= 50
 
-    # Metodas, skirtas grąžinti knygos grąžinimo datą
     @staticmethod
     def due_date(borrow_date, days=14):
         return borrow_date + timedelta(days=days)
 
 
-# Bibliotekos klasės sukūrimas
 class Library:
     def __init__(self):
         self.books_list = []
-        # Iš anksto pridėtos knygos
         self.books_list.append(Book("Haris Poteris", "J.K. Rowling", 1997))
         self.books_list.append(Book("1984", "George Orwell", 1949))
         self.books_list.append(Book("Didysis Getsbis", "F. Scott Fitzgerald", 1925))
         self.books_list.append(Book("Žiedų Valdovas", "J.R.R. Tolkien", 1954))
 
-    # Pridedame naują knygą į biblioteką
     def add_book(self, new_book):
         if isinstance(new_book, Book):
             self.books_list.append(new_book)
         else:
             print("Nepavyko pridėti knygos")
 
-    # Atvaizduojame visas knygas
     def display_books(self):
         if not self.books_list:
             print('Biblioteka tuščia, sugrįžkite vėliau.')
@@ -57,7 +48,6 @@ class Library:
             for b in self.books_list:
                 print(b)
 
-    # Knygos skolinimosi funkcija
     def borrow_book(self, book_title, days=14):
         for b in self.books_list:
             if b.book_title == book_title and b.available:
@@ -67,7 +57,6 @@ class Library:
                 return f"Knyga pasiskolinta iki {b.due_date.strftime('%Y-%m-%d')}"
         return "Knyga nepasiekiama"
 
-    # Knygos grąžinimas
     def return_book(self, book_title):
         for b in self.books_list:
             if b.book_title == book_title and not b.available:
@@ -75,7 +64,6 @@ class Library:
                 return "Knyga sėkmingai grąžinta"
         return "Knyga negali būti grąžinta"
 
-    # Knygų filtravimas
     def filter_books(self, *args, **kwargs):
         results = self.books_list
 
