@@ -24,34 +24,61 @@
 # print(apdoroti_teksta('sis tekstas su funkcija', prideti_zenkliuka))
 # print(keli_apdorojimai('sis tekstas su keliomis funkcijomis', prideti_zenkliuka, apversti_sakini))
 
-# 2. Dekoratoriai
+# # 2. Dekoratoriai
+#
+# def sekimo_dekoratorius(funkcija):
+#     def apvalkalas(*args, **kwargs):
+#         print(f'Vykdoma funkcija : {funkcija.__name__}')
+#         res = funkcija(*args, **kwargs)
+#         print('Funkcija baigta.')
+#         return res
+#     return apvalkalas
+#
+# @sekimo_dekoratorius
+# def dauginti(a, b):
+#     return a * b
+#
+# @sekimo_dekoratorius
+# def dalinti(a, b):
+#     if b == 0:
+#         return 'dalyba is nulio negalima'
+#     return a / b
+#
+# print("Dauginimo testas:")
+# rezultatas1 = dauginti(5, 3)
+# print(f"Rezultatas: {rezultatas1}\n")
+#
+# print("Dalybos testas:")
+# rezultatas2 = dalinti(10, 2)
+# print(f"Rezultatas: {rezultatas2}\n")
+#
+# print("Dalybos iš nulio testas:")
+# rezultatas3 = dalinti(8, 0)
+# print(f"Rezultatas: {rezultatas3}")
 
-def sekimo_dekoratorius(funkcija):
-    def apvalkalas(*args, **kwargs):
-        print(f'Vykdoma funkcija : {funkcija.__name__}')
-        res = funkcija(*args, **kwargs)
-        print('Funkcija baigta.')
-        return res
-    return apvalkalas
+# 3. Iteratoriai
 
-@sekimo_dekoratorius
-def dauginti(a, b):
-    return a * b
+class SkaiciuSekosIteratorius:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+        self.esamas = a - 2
 
-@sekimo_dekoratorius
-def dalinti(a, b):
-    if b == 0:
-        return 'dalyba is nulio negalima'
-    return a / b
+    def __iter__(self):
+         return self
 
-print("Dauginimo testas:")
-rezultatas1 = dauginti(5, 3)
-print(f"Rezultatas: {rezultatas1}\n")
+    def __next__(self):
+        self.esamas += 2
+        if self.esamas <= self.b:
+            return self.esamas
+        else:
+            raise StopIteration
 
-print("Dalybos testas:")
-rezultatas2 = dalinti(10, 2)
-print(f"Rezultatas: {rezultatas2}\n")
+    def atgaline_seka(self):
+        return list(range(self.b, self.a - 1, -2))
 
-print("Dalybos iš nulio testas:")
-rezultatas3 = dalinti(8, 0)
-print(f"Rezultatas: {rezultatas3}")
+iteratorius = SkaiciuSekosIteratorius(1, 10)
+for skaicius in iteratorius:
+    print(skaicius)  # Tai grąžins 1, 3, 5, 7, 9
+
+print(iteratorius.atgaline_seka())
