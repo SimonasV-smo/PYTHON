@@ -79,6 +79,6 @@ class SkaiciuSekosIteratorius:
 
 iteratorius = SkaiciuSekosIteratorius(1, 10)
 for skaicius in iteratorius:
-    print(skaicius)  # Tai grąžins 1, 3, 5, 7, 9
+    print(skaicius)
 
 print(iteratorius.atgaline_seka())
