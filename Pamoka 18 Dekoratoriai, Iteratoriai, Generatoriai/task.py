@@ -56,29 +56,53 @@
 # rezultatas3 = dalinti(8, 0)
 # print(f"Rezultatas: {rezultatas3}")
 
-# 3. Iteratoriai
+# # 3. Iteratoriai
+#
+# class SkaiciuSekosIteratorius:
+#     def __init__(self, a, b):
+#         self.a = a
+#         self.b = b
+#         self.esamas = a - 2
+#
+#     def __iter__(self):
+#          return self
+#
+#     def __next__(self):
+#         self.esamas += 2
+#         if self.esamas <= self.b:
+#             return self.esamas
+#         else:
+#             raise StopIteration
+#
+#     def atgaline_seka(self):
+#         return list(range(self.b, self.a - 1, -2))
+#
+# iteratorius = SkaiciuSekosIteratorius(1, 10)
+# for skaicius in iteratorius:
+#     print(skaicius)
+#
+# print(iteratorius.atgaline_seka())
 
-class SkaiciuSekosIteratorius:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-        self.esamas = a - 2
 
-    def __iter__(self):
-         return self
+# F(n)=F(n−1)+F(n−2)
+# 4 task
 
-    def __next__(self):
-        self.esamas += 2
-        if self.esamas <= self.b:
-            return self.esamas
-        else:
-            raise StopIteration
+def fib_generator(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
 
-    def atgaline_seka(self):
-        return list(range(self.b, self.a - 1, -2))
+for num in fib_generator(10):
+    print(num)
 
-iteratorius = SkaiciuSekosIteratorius(1, 10)
-for skaicius in iteratorius:
-    print(skaicius)
+print('-' * 50)
 
-print(iteratorius.atgaline_seka())
+def filtruoti_lyginius(seka):
+    for num in seka:
+        if num % 2 == 0:
+            yield num
+
+fibonacci_seka = list(fib_generator(10))
+lyginiai = list(filtruoti_lyginius(fibonacci_seka))
+print(lyginiai)
