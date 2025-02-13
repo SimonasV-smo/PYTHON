@@ -103,3 +103,52 @@ if __name__ == "__main__":
     # Atspausdiname mokyklas su daugiau nei 600 mokinių
     print("\nMokyklos su daugiau nei 600 mokinių:")
     gauti_mokyklas(min_mokiniu_skaicius=600)
+
+# 4. Funkcija mokinių skaičiaus atnaujinimui
+def atnaujinti_mokiniu_skaiciu(pavadinimas, naujas_mokiniu_skaicius):
+    conn = None  # Inicializuojame conn kaip None
+    try:
+        # Prisijungiam prie duomenų bazės
+        conn = sqlite3.connect('mokykla.db')
+        cursor = conn.cursor()
+
+        # Atnaujiname mokinių skaičių nurodytai mokyklai
+        cursor.execute('''
+        UPDATE mokykla
+        SET mokiniu_skaicius = ?
+        WHERE pavadinimas = ?
+        ''', (naujas_mokiniu_skaicius, pavadinimas))
+
+        # Patvirtiname pakeitimus
+        conn.commit()
+        print(f"Mokyklos '{pavadinimas}' mokinių skaičius sėkmingai atnaujintas į {naujas_mokiniu_skaicius}.")
+    except sqlite3.Error as e:
+        print(f"Klaida atnaujinant mokinių skaičių: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+
+# Pagrindinė programos dalis
+if __name__ == "__main__":
+    # Sukuriame lentelę (jei reikia)
+    sukurti_lentele()
+
+    # Įterpiame pradinius duomenis
+    prideti_mokykla("Vilniaus progimnazija", "Vilniaus g. 10", 500)
+    prideti_mokykla("Kauno gimnazija", "Kauno g. 5", 800)
+
+    # Atspausdiname visus duomenis
+    print("\nVisos mokyklos:")
+    gauti_mokyklas()
+
+    # Atspausdiname mokyklas su daugiau nei 600 mokinių
+    print("\nMokyklos su daugiau nei 600 mokinių:")
+    gauti_mokyklas(min_mokiniu_skaicius=600)
+
+    # Atnaujiname mokinių skaičių
+    atnaujinti_mokiniu_skaiciu("Vilniaus progimnazija", 600)
+
+    # Patikriname, ar atnaujinimas buvo sėkmingas
+    print("\nVisos mokyklos po atnaujinimo:")
+    gauti_mokyklas()
