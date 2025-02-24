@@ -2,6 +2,12 @@ from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, disti
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 
+from prettytable import PrettyTable
+from sql.run import ResultSet
+ResultSet.pretty_table_style = PrettyTable.PLAIN_COLUMNS
+
+
+
 Base = declarative_base()
 
 class Mokytojas(Base):
