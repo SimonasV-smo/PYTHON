@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registracijos Forma</title>
+</head>
+<body>
+    <h1>Registracijos Forma</h1>
+    <form action="/registracija" method="post">
+        <label for="vardas">Vartotojo vardas:</label><br>
+        <input type="text" id="vardas" name="vardas"><br><br>
+
+        <label for="slaptazodis">Slaptažodis:</label><br>
+        <input type="password" id="slaptazodis" name="slaptazodis"><br><br>
+
+        <label for="pakartotas_slaptazodis">Pakartokite slaptažodį:</label><br>
+        <input type="password" id="pakartotas_slaptazodis" name="pakartotas_slaptazodis"><br><br>
+
+        <button type="submit">Registruotis</button>
+    </form>
+
+    {% if pranesimas %}
+    <p><strong>{{ pranesimas }}</strong></p>
+    {% endif %}
+</body>
+</html>
+

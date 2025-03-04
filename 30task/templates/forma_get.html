@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GET Paieška</title>
+</head>
+<body>
+    <form action="/paieska" method="get">
+        <label for="fraze">Įveskite paieškos frazę:</label>
+        <input type="text" id="fraze" name="fraze">
+        <button type="submit">Ieškoti</button>
+    </form>
+
+    {% if fraze %}
+    <p>Paieškos rezultatai: {{ fraze }}</p>
+    {% endif %}
+</body>
+</html>
