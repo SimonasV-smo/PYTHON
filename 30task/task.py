@@ -22,13 +22,13 @@ def prisijungti():
 
 @app.route('/registracija', methods=['GET', 'POST'])
 def registracija():
-    pranesimas = None  # Pranešimas vartotojui
+    pranesimas = None
     if request.method == 'POST':
         vardas = request.form.get('vardas')
         slaptazodis = request.form.get('slaptazodis')
         pakartotas_slaptazodis = request.form.get('pakartotas_slaptazodis')
 
-        # Validacija
+
         if not vardas or not slaptazodis or not pakartotas_slaptazodis:
             pranesimas = "Klaida: Užpildykite visus laukus!"
         elif len(slaptazodis) < 6:
