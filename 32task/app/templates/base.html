@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My App{% endblock %}</title>
+    <!-- Nuoroda į CSS failą -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Workplace WEB</h1>
+        <nav>
+            <!-- Navigacija tarp puslapių -->
+            <a href="/workplaces" class="button blue">Workplaces</a>
+            <a href="/employees" class="button blue">Employees</a>
+            <a href="/workplaces/add" class="button blue">Add Workplace</a>
+            <a href="/employees/add" class="button blue">Add Employee</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Dinamiškas turinys -->
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My App</p>
+    </footer>
+</body>
+</html>

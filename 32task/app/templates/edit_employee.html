@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Employee{% endblock %}
+
+{% block content %}
+<h2>Edit Employee</h2>
+<form method="POST" action="/employees/edit/{{ employee.id }}">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" value="{{ employee.first_name }}" required><br><br>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" value="{{ employee.last_name }}" required><br><br>
+
+    <label for="position">Position:</label>
+    <input type="text" id="position" name="position" value="{{ employee.position }}" required><br><br>
+
+    <label for="workplace_id">Workplace:</label>
+    <select id="workplace_id" name="workplace_id" required>
+        {% for workplace in workplaces %}
+        <option value="{{ workplace.id }}" {% if workplace.id == employee.workplace_id %}selected{% endif %}>
+            {{ workplace.name }}
+        </option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

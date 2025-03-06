@@ -1,0 +1,187 @@
+/* Bendri nustatymai */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden; /* Pašaliname horizontalią slinktį */
+}
+
+/* Header stilius */
+header {
+    background-color: #4CAF50; /* Žalia header spalva */
+    color: white; /* Balta teksto spalva */
+    padding: 10px 20px; /* Vidiniai tarpai */
+    text-align: center; /* Centrojuojame tekstą */
+    width: 100%; /* Header plotis dengia visą ekraną */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Švelnus šešėlis */
+}
+
+header nav {
+    display: flex;
+    justify-content: center; /* Centrojuojame nuorodas */
+    gap: 15px; /* Tarpai tarp nuorodų */
+    margin-top: 10px;
+}
+
+header nav a {
+    padding: 10px 15px;
+    text-decoration: none; /* Nuimame pabraukimą */
+    color: white; /* Balta spalva tekstui */
+    background-color: #2196F3; /* Mėlyna fonas nuorodoms */
+    border-radius: 5px; /* Užapvalinti kampai */
+    font-weight: bold; /* Ryškesnis tekstas */
+    font-size: 14px;
+}
+
+header nav a:hover {
+    background-color: #1E88E5; /* Tamsesnė mėlyna užvedus pelę */
+}
+
+/* Puslapio antraštės */
+.page-title {
+    text-align: center; /* Centrojuojame antraštę */
+    font-size: 2em;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #4CAF50; /* Žalia spalva */
+}
+
+/* Lentelės stilius */
+table {
+    width: 100%; /* Lentelė užima visą plotį */
+    table-layout: fixed; /* Užtikriname fiksuotą išdėstymą */
+    border-collapse: collapse; /* Suvienodiname ribas tarp langelių */
+    margin: 20px 0;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ddd; /* Pilkos linijos aplink langelius */
+    padding: 8px; /* Patogūs tarpai, kad elementai nesikirstų */
+    text-align: center; /* Centruojame turinį */
+    word-wrap: break-word; /* Laužome tekstą, kad jis tilptų langelyje */
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 15%; /* Fiksuotas plotis „Employee Count“ stulpeliui */
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 25%; /* Pakankamas plotis „Actions“ stulpeliui */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Šviesiai pilkas fonas užvedus pelę */
+}
+
+/* Mygtukai */
+button, a.button {
+    padding: 10px 15px;
+    text-decoration: none; /* Nuimame pabraukimą */
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Žalias mygtukas (Add Employee, Details) */
+button.green, a.button.green {
+    background-color: #4CAF50;
+    color: white;
+}
+
+button.green:hover, a.button.green:hover {
+    background-color: #388E3C; /* Tamsesnė žalia užvedus pelę */
+}
+
+/* Mėlynas mygtukas (Edit) */
+button.blue, a.button.blue {
+    background-color: #2196F3;
+    color: white;
+}
+
+button.blue:hover, a.button.blue:hover {
+    background-color: #1E88E5;
+}
+
+/* Raudonas mygtukas (Delete) */
+button.red, a.button.red {
+    background-color: #f44336;
+    color: white;
+}
+
+button.red:hover, a.button.red:hover {
+    background-color: #d32f2f;
+}
+
+/* Paieškos forma */
+form.search-bar {
+    display: flex;
+    flex-wrap: wrap; /* Užtikriname, kad elementai tinkamai išsidėstytų */
+    justify-content: center; /* Centrojuojame paieškos laukus */
+    gap: 10px; /* Tarpai tarp formos elementų */
+    margin-bottom: 20px;
+}
+
+form.search-bar input[type="text"], form.search-bar button {
+    padding: 8px; /* Patogūs tarpai formos elementams */
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form.search-bar button {
+    background-color: #4CAF50; /* Žalia spalva paieškos mygtukui */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form.search-bar button:hover {
+    background-color: #388E3C;
+}
+
+/* Centrojame lenteles (Add Workplace ir Add Employee) */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrojuojame formą horizontaliai */
+    justify-content: center; /* Centrojuojame formą vertikaliai */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 600px; /* Apribojame maksimalų formos plotį */
+}
+
+/* Tinkamas išdėstymas mažesniuose ekranuose */
+@media screen and (max-width: 768px) {
+    th, td {
+        font-size: 12px; /* Mažesnis šrifto dydis */
+        padding: 6px; /* Mažesni tarpai */
+    }
+
+    form.search-bar {
+        flex-direction: column; /* Vertikalus formos išdėstymas */
+        align-items: center;
+    }
+
+    form.search-bar input[type="text"], form.search-bar button {
+        width: 100%; /* Elementai užima visą galimą plotį */
+    }
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Užima visą puslapio plotį */
+    background-color: #4CAF50; /* Žalia spalva */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Švelnus šešėlis */
+}
