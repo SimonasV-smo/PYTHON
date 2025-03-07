@@ -29,9 +29,8 @@ def add_workplace():
     if request.method == 'POST':
         name = request.form['name']
         city = request.form['city']
-        employee_count = int(request.form['employee_count'])
 
-        new_workplace = Workplace(name=name, city=city, employee_count=employee_count)
+        new_workplace = Workplace(name=name, city=city)
         db.session.add(new_workplace)
         db.session.commit()
 
@@ -45,7 +44,6 @@ def edit_workplace(workplace_id):
     if request.method == 'POST':
         workplace.name = request.form['name']
         workplace.city = request.form['city']
-        workplace.employee_count = int(request.form['employee_count'])
 
         db.session.commit()
         return redirect(url_for('main.list_workplaces'))
@@ -56,7 +54,7 @@ def edit_workplace(workplace_id):
 @main.route('/workplaces/delete/<int:workplace_id>', methods=['POST'])
 def delete_workplace(workplace_id):
     workplace = Workplace.query.get_or_404(workplace_id)
-    if workplace.employee_count > 0:
+    if Employee.query.filter_by(workplace_id=workplace_id).count() > 0:
         return "Workplace cannot be deleted as it has employees.", 400  # Klaida, jei yra darbuotojų
 
     db.session.delete(workplace)
@@ -85,11 +83,6 @@ def add_employee():
         db.session.add(new_employee)
         db.session.commit()
 
-        # Atnaujiname darbovietės darbuotojų skaičių
-        workplace = Workplace.query.get(workplace_id)
-        workplace.employee_count += 1
-        db.session.commit()
-
         return redirect(url_for('main.list_employees'))
     return render_template('add_employee.html', workplaces=workplaces)
 
@@ -112,13 +105,6 @@ def edit_employee(employee_id):
 @main.route('/employees/delete/<int:employee_id>', methods=['POST'])
 def delete_employee(employee_id):
     employee = Employee.query.get_or_404(employee_id)
-
-    # Atnaujiname darbuotojų skaičių darbovietėje
-    workplace = Workplace.query.get(employee.workplace_id)
-    if workplace:
-        workplace.employee_count -= 1
-        db.session.commit()
-
     db.session.delete(employee)
     db.session.commit()
     return redirect(url_for('main.list_employees'))
@@ -131,23 +117,21 @@ def search_workplaces():
     # Filtruojame darboviečių sąrašą pagal pavadinimą ir/ar miestą
     workplaces = Workplace.query
     if query_name:
-        workplaces = workplaces.filter(Workplace.name.ilike(f"%{query_name}%"))  # Nejautrus pavadinimų paieškai
+        workplaces = workplaces.filter(Workplace.name.ilike(f"%{query_name}%"))
     if query_city:
-        workplaces = workplaces.filter(Workplace.city.ilike(f"%{query_city}%"))  # Nejautrus miestų paieškai
+        workplaces = workplaces.filter(Workplace.city.ilike(f"%{query_city}%"))
 
     workplaces = workplaces.all()
     return render_template('workplaces.html', workplaces=workplaces)
 
 @main.route('/workplaces/<int:workplace_id>')
 def workplace_details(workplace_id):
-    workplace = Workplace.query.get_or_404(workplace_id)  # Surandame darbovietę pagal ID
-    employees = Employee.query.filter_by(workplace_id=workplace_id).all()  # Susiejame darbuotojus
+    workplace = Workplace.query.get_or_404(workplace_id)
+    employees = Employee.query.filter_by(workplace_id=workplace_id).all()
 
-    # Apskaičiuojame tikrąjį darbuotojų skaičių
     actual_employee_count = len(employees)
 
     return render_template('workplace_details.html',
                            workplace=workplace,
                            employees=employees,
                            employee_count=actual_employee_count)
-

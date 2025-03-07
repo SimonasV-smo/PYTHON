@@ -5,7 +5,6 @@ class Workplace(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Pagrindinis raktas
     name = db.Column(db.String(100), nullable=False)  # Darbovietės pavadinimas
     city = db.Column(db.String(100), nullable=False)  # Miestas
-    employee_count = db.Column(db.Integer, default=0)  # Darbuotojų skaičius (pagal nutylėjimą 0)
 
     # Lentelės ryšys su darbuotojais (viena darbovietė gali turėti daug darbuotojų)
     employees = db.relationship('Employee', backref='workplace', lazy=True)

@@ -31,11 +31,14 @@
         <tr>
             <td>{{ workplace.name }}</td>
             <td>{{ workplace.city }}</td>
-            <td>{{ workplace.employee_count }}</td>
+            <td>{{ workplace.actual_employee_count }}</td> <!-- Dinaminis darbuotojų skaičius -->
             <td>
-                <a href="/workplaces/{{ workplace.id }}" class="button green">Details</a>
-                <form method="POST" action="/workplaces/delete/{{ workplace.id }}" style="display:inline;">
-                    <button type="submit" class="button red" onclick="return confirm('Are you sure you want to delete this workplace?');">Delete</button>
+                <div class="actions">
+                    <a href="/workplaces/{{ workplace.id }}" class="button green">Details</a>
+                    <button type="submit" class="button red" form="delete-form-{{ workplace.id }}">Delete</button>
+                </div>
+                <form id="delete-form-{{ workplace.id }}" method="POST" action="/workplaces/delete/{{ workplace.id }}" style="display:none;">
+                    <!-- Paslėpta forma „Delete“ veiksmui -->
                 </form>
             </td>
         </tr>

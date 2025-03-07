@@ -4,13 +4,15 @@
 
 {% block content %}
 <h2>Employees</h2>
+
+<!-- Darbuotojų lentelė -->
 <table>
     <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Position</th>
-            <th>Workplace</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -19,18 +21,15 @@
             <td>{{ employee.first_name }}</td>
             <td>{{ employee.last_name }}</td>
             <td>{{ employee.position }}</td>
-            <td>{{ employee.workplace.name }}</td>
             <td>
-    <a href="/employees/edit/{{ employee.id }}" class="button green">Edit</a>
-</td>
-
-            <td>
-    <form method="POST" action="/employees/delete/{{ employee.id }}" style="display:inline;">
-        <button type="submit" class="button red" onclick="return confirm('Are you sure?');">Delete</button>
-    </form>
-</td>
-
-
+                <div class="actions">
+                    <a href="/employees/{{ employee.id }}/edit" class="button blue">Edit</a>
+                    <button type="submit" class="button red" form="delete-form-{{ employee.id }}">Delete</button>
+                </div>
+                <form id="delete-form-{{ employee.id }}" method="POST" action="/employees/delete/{{ employee.id }}" style="display:none;">
+                    <!-- Paslėpta forma „Delete“ veiksmui -->
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
