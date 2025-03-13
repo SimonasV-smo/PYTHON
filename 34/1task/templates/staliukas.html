@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Staliukas Nr. {{ staliukas.numeris }}</h2>
+<p>Vietu skaicius {{ staliukas.vietu_skaicius }}</p>
+
+<h3>Uzsakymai</h3>
+<table>
+    <tr>
+        <th>Aprasymas</th>
+        <th>Kaina</th>
+    </tr>
+    {% for uzsakymas in staliukas.uzsakymai %}
+    <tr>
+        <td>{{ uzsakymas.aprasymas }}</td>
+        <td>{{ uzsakymas.kaina }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Prideti nauja uzsakyma</h3>
+<form action="{{ url_for('add_uzsakymas', staliukas_id=staliukas.id) }}" method="POST">
+    <input type="number" name="aprasymas" placeholder="Uzsakymo aprasymas">
+    <input type="number" name="kaina" placeholder=Kaina">
+    <button type="submit">Prideti</button>
+</form>
+
+<br>
+<a href="{{ url_for('index') }}">Atgal</a>
+{% endblock %}

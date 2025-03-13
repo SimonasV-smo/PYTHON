@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Staliukai</h2>
+<table>
+    <tr>
+        <th>Numeris</th>
+        <th>Vietu skaicius</th>
+        <th>Uzsakymu skaicius</th>
+        <th>Viksmai</th>
+    </tr>
+    {% for staliukas in staliukai %}
+    <tr>
+        <td>{{ staliukas.numeris }}</td>
+        <td>{{ staliukas.vietu_skaicius }}</td>
+        <td>{{ staliukas.uzsakymai|length }}</td>
+        <td>
+            <a href="{{ url_for('staliukas', id=staliukas.id) }}">Perziureti</a>
+            <form action="{{ url_for('delete_staliukas', id=staliukas.id) }}" method="POST">
+                <button type="submit">Istrinti</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Prideti nauja staliuka</h3>
+<form action="{{ url_for('add_staliukas') }}" method="POST">
+    <input type="number" name="numeris" placeholder="Staliuko numeris">
+    <input type="number" name="vietu_skaicius" placeholder="Vietu skaicius">
+    <button type="submit">Prideti</button>
+</form>
+{% endblock %}
